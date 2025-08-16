@@ -28,6 +28,30 @@ internal class Practical : Exam
         foreach (var question in Questions)
         {
             Console.WriteLine(question);
+            int index = 1;
+            Console.WriteLine("Please select the correct answer:");
+            foreach (var answer in question.Answers)
+            {
+                Console.WriteLine($"{index} {answer}");
+                index++;
+            }
+            Console.WriteLine("Enter the number of your answer:");
+            int selectedAnswerIndex;
+            while (!int.TryParse(Console.ReadLine(), out selectedAnswerIndex) || 
+                   selectedAnswerIndex < 1 || 
+                   selectedAnswerIndex > question.Answers.Count)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid answer number.");
+            }
+            var selectedAnswer = question.Answers[selectedAnswerIndex - 1];
+            if (selectedAnswer == question.rightAnswer)
+            {
+                Console.WriteLine("Correct answer!");
+            }
+            else
+            {
+                Console.WriteLine("Incorrect answer. The correct answer is: " + question.rightAnswer);
+            }
         }
     }
 }

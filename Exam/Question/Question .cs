@@ -1,12 +1,15 @@
 ﻿
 internal abstract class Question
 {
-    public string QuestionHeader { get; set; }
-    public string QuestionBody { get; set; }
-    public string QuestionMark { get; set; }
-    public Answer[] Answers { get; set; }
-    public Answer rightAnswer { get; set; }
+    public abstract string QuestionHeader { get; set; }
+    public abstract string QuestionBody { get; set; }
+    public abstract int QuestionMark { get; set; }
+    public abstract List<Answer> Answers { get; set; }
+    public  abstract Answer rightAnswer { get; set; }
 
-    public override string ToString() => $"{QuestionHeader} - {QuestionBody} (Mark: {QuestionMark})";
+    public override string ToString()
+    {
+        return $"{QuestionHeader} - {QuestionBody} (Mark: {QuestionMark})\n";
+    }
 }
 
